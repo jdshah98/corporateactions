@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from actions.views import add_transaction
+from actions.views import create_transaction, get_transactions, get_holdings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('transaction/', add_transaction, name='add_transaction'),
+    path('transactions/', create_transaction, name='Create_Transaction'),
+    path('transactions/<str:company_name>', get_transactions, name='Get_Transactions'),
+    path('holdings/<str:company_name>', get_holdings, name='Get_Holdings'),
 ]
